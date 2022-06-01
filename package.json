@@ -1,0 +1,27 @@
+{
+  "name": "bumi-cloud-computing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BUMI-Team/BUMI-Cloud-Computing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BUMI-Team/BUMI-Cloud-Computing/issues"
+  },
+  "homepage": "https://github.com/BUMI-Team/BUMI-Cloud-Computing#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "firebase": "^9.8.2"
+  }
+}
