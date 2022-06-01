@@ -16,7 +16,10 @@ router.post("/signup", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
+      await updateProfile(auth.currentUser, {
+        displayName: displayName,
+      });
       res.json(userCredential.user);
     })
     .catch((error) => {
