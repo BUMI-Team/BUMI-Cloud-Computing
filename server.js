@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { host, port, firebaseConfig } from "./config.js";
+import { port, firebaseConfig } from "./config.js";
 import { authRoutes } from './src/routes/auth-routes.js';
 import express from "express";
 import bodyParser from "body-parser";
