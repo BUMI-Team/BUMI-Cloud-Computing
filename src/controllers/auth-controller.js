@@ -5,6 +5,7 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
   signOut,
+  GoogleAuthProvider,
 } from "firebase/auth";
 
 export function signUp(req, res) {
@@ -24,13 +25,26 @@ export function signUp(req, res) {
     });
 }
 
+export function signUpGoogle(req, res) {
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth(firebaseApp);
+  getRedirectResult(auth)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      res.status(200).json(credential);
+    })
+    .catch((error) => {
+      res.status(error.code).json(error);
+    });
+}
+
 export function logIn(req, res) {
   const auth = getAuth(firebaseApp);
   const email = req.body.email;
   const password = req.body.password;
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      res.json(userCredential.user);
+      res.status(200).json(userCredential.user);
     })
     .catch((error) => {
       res.status(400).json(error);
