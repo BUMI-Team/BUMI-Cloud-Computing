@@ -41,12 +41,12 @@ export function logOut(req, res) {
   const auth = getAuth(firebaseApp);
   signOut(auth)
     .then(() => {
-      res.json({
+      res.status(200).json({
         code: 200,
         message: "User signed out",
       });
     })
     .catch((error) => {
-      res.statusCode(400).json(error);
+      res.status(400).json(error);
     });
 }

@@ -13,7 +13,7 @@ expressApp.use(
     extended: true,
   })
 );
-expressApp.use('/api/v1', authRoutes);
+expressApp.use('/api/auth', authRoutes);
 expressApp.listen(port, () => {
   console.log(`Server is running on PORT ${port}.`);
 });

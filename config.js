@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 
 dotenv.config();
-const host = process.env.HOST;
 const port = process.env.PORT;
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -11,4 +10,4 @@ const firebaseConfig = {
   messagingSenderId: process.env.MESSAGING_SENDER_ID,
   appId: process.env.APP_ID,
 };
-export { firebaseConfig, host, port };
+export { port, firebaseConfig };
