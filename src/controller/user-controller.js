@@ -6,10 +6,11 @@ exports.GetUser = async (req, res) => {
     .then((userRecord) => {
       if (typeof userRecord === "undefined") {
         res.status(404).json({
+          code: 404,
           message: "User not found!",
         });
       } else {
-        res.status(200).json(userRecord);
+        res.status(200).json({ code: 200, userRecord: userRecord });
       }
     })
     .catch((error) => {
@@ -29,11 +30,11 @@ exports.UpdateUser = async (req, res) => {
     })
     .then((userRecord) => {
       res.status(200).json({
-        'message': 'Successfully updated user', 
-        'userRecord': userRecord
+        message: "Successfully updated user",
+        userRecord: userRecord,
       });
     })
     .catch((error) => {
-      res.status(500).json(error);
+      res.status(500).json({ code: 500, error: error });
     });
-}
+};
