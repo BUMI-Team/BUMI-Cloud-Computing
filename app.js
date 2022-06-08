@@ -4,13 +4,13 @@ const app = express();
 const { credential } = require("firebase-admin");
 const { initializeApp } = require("firebase-admin/app");
 const { getFirestore } = require("firebase-admin/firestore");
-const serviceAccount = require("./serviceAccountKey.json");
+const { secrets } = require("./secrets");
 
 const UserRoutes = require("./src/routes/user-routes");
 const RecommenderRoutes = require("./src/routes/recommender-routes");
 
 initializeApp({
-  credential: credential.cert(serviceAccount),
+  credential: credential.cert(secrets),
 });
 
 db = getFirestore();
