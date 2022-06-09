@@ -7,7 +7,6 @@ function Middleware(req, res, next) {
     .verifyIdToken(tokenString)
     .then((decodedToken) => {
       req.uid = decodedToken.uid;
-      req.param.uid = decodedToken.uid;
       next();
     })
     .catch((error) => {

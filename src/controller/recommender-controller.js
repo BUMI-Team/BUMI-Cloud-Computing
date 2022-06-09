@@ -1,9 +1,10 @@
 exports.AddRecommender = async (req, res, next) => {
   const { db } = require("../../app");
   const { jenisUsaha, kategoriUsaha } = req.body;
-  const document = db.collection("recommender").doc(req.uid);
+  const document = db.collection("recommender").doc();
   await document
     .set({
+      uid: req.uid,
       jenisUsaha: jenisUsaha,
       kategoriUsaha: kategoriUsaha,
     })
@@ -22,17 +23,17 @@ exports.AddRecommender = async (req, res, next) => {
 
 exports.GetRecommender = async (req, res, next) => {
   const { db } = require("../../app");
-  const document = db.collection("recommender").doc(req.params.uid);
+  const document = db.collection("recommender").where("uid", "==", req.uid);
   await document
     .get()
-    .then((doc) => {
-      if (!doc.exists) {
+    .then((snapshot) => {
+      if (snapshot.docs.length > 0) {
+        res.status(200).json(snapshot.docs[0].data());
+      } else {
         res.status(404).json({
           code: 404,
           message: "Document does not exist!",
         });
-      } else {
-        res.status(200).json(doc.data());
       }
     })
     .catch((error) => {
