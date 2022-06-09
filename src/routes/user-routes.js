@@ -1,9 +1,10 @@
-const app = require("express");
+import app from "express";
+import Middleware from "../middleware/middleware.js";
+import { GetUser, UpdateUser } from "../controllers/user-controller.js";
+
 const router = app.Router();
-const Middleware = require("../middleware/middleware");
-const { GetUser, UpdateUser } = require("../controller/user-controller");
 
 router.get("/", Middleware, GetUser);
 router.patch("/", Middleware, UpdateUser);
 
-module.exports = router;
+export { router as UserRoutes };

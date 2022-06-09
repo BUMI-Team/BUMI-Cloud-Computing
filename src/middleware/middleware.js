@@ -1,4 +1,4 @@
-const { getAuth } = require("firebase-admin/auth");
+import { getAuth } from "firebase-admin/auth";
 
 function Middleware(req, res, next) {
   const bearerToken = req.headers.authorization;
@@ -10,7 +10,11 @@ function Middleware(req, res, next) {
       next();
     })
     .catch((error) => {
-      res.status(403).json(error);
+      res.status(403).json({
+        code: 403,
+        error: error,
+      });
     });
 }
-module.exports = Middleware;
+
+export default Middleware;
