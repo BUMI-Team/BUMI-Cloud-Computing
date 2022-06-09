@@ -1,23 +1,27 @@
-const express = require("express");
+import express from "express";
+import pkg from "firebase-admin";
+import { initializeApp as initializeAdminApp } from "firebase-admin/app";
+import { initializeApp as initializeClientApp } from "firebase/app";
+import { getFirestore } from "firebase-admin/firestore";
+import { adminSecrets, clientSecrets } from "./secrets.js";
+
+import { AuthRoutes } from "./src/routes/auth-routes.js";
+import { UserRoutes } from "./src/routes/user-routes.js";
+import { RecommenderRoutes } from "./src/routes/recommender-routes.js";
+
 const app = express();
-
-const { credential } = require("firebase-admin");
-const { initializeApp } = require("firebase-admin/app");
-const { getFirestore } = require("firebase-admin/firestore");
-const { secrets } = require("./secrets");
-
-const UserRoutes = require("./src/routes/user-routes");
-const RecommenderRoutes = require("./src/routes/recommender-routes");
-
-initializeApp({
-  credential: credential.cert(secrets),
+const { credential } = pkg;
+initializeAdminApp({
+  credential: credential.cert(adminSecrets),
 });
 
-db = getFirestore();
+const db = getFirestore();
+const firebaseClientApp = initializeClientApp(clientSecrets);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/api/auth", AuthRoutes);
 app.use("/api/recommender", RecommenderRoutes);
 app.use("/api/user", UserRoutes);
 
-module.exports = { db, app };
+export { app, db, firebaseClientApp };

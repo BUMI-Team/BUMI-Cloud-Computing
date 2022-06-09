@@ -1,12 +1,14 @@
-exports.AddRecommender = async (req, res, next) => {
-  const { db } = require("../../app");
-  const { jenisUsaha, kategoriUsaha } = req.body;
+import { db } from "../../app.js";
+
+export async function AddRecommender(req, res, next) {
+  const { jenisUsaha, kategoriUsaha, rekomendasi } = req.body;
   const document = db.collection("recommender").doc();
   await document
     .set({
       uid: req.uid,
       jenisUsaha: jenisUsaha,
       kategoriUsaha: kategoriUsaha,
+      rekomendasi: rekomendasi,
     })
     .then(() => {
       res.status(200).json({
@@ -16,19 +18,22 @@ exports.AddRecommender = async (req, res, next) => {
     })
     .catch((error) => {
       res.status(500).json({
-        message: error,
+        code: 500,
+        error: error,
       });
     });
-};
+}
 
-exports.GetRecommender = async (req, res, next) => {
-  const { db } = require("../../app");
+export async function GetRecommender(req, res, next) {
   const document = db.collection("recommender").where("uid", "==", req.uid);
   await document
     .get()
     .then((snapshot) => {
       if (snapshot.docs.length > 0) {
-        res.status(200).json(snapshot.docs[0].data());
+        res.status(200).json({
+          code: 200,
+          snapshot: snapshot.docs[0].data()
+        });
       } else {
         res.status(404).json({
           code: 404,
@@ -38,7 +43,8 @@ exports.GetRecommender = async (req, res, next) => {
     })
     .catch((error) => {
       res.status(500).json({
-        message: error,
+        code: 500,
+        error: error,
       });
     });
-};
+}
