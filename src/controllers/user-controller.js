@@ -1,6 +1,6 @@
-const { getAuth } = require("firebase-admin/auth");
+import { getAuth } from "firebase-admin/auth";
 
-exports.GetUser = async (req, res) => {
+export async function GetUser(req, res) {
   await getAuth()
     .getUser(req.uid)
     .then((userRecord) => {
@@ -14,11 +14,14 @@ exports.GetUser = async (req, res) => {
       }
     })
     .catch((error) => {
-      res.json(error);
+      res.status(500).json({
+        code: 500,
+        error: error,
+      });
     });
-};
+}
 
-exports.UpdateUser = async (req, res) => {
+export async function UpdateUser(req, res) {
   const { email, phoneNumber, password, displayName, photoURL } = req.body;
   await getAuth()
     .updateUser(req.uid, {
@@ -30,11 +33,15 @@ exports.UpdateUser = async (req, res) => {
     })
     .then((userRecord) => {
       res.status(200).json({
+        code: 200,
         message: "Successfully updated user",
         userRecord: userRecord,
       });
     })
     .catch((error) => {
-      res.status(500).json({ code: 500, error: error });
+      res.status(500).json({
+        code: 500,
+        error: error,
+      });
     });
-};
+}
