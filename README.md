@@ -2,8 +2,6 @@
 
 ## API endpoints for Android
 
-### App Engine
-
 1. Sign Up, Sign In, Sign Out.
 
 ```
