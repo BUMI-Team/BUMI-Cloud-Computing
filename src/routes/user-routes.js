@@ -3,7 +3,7 @@ const router = app.Router();
 const Middleware = require("../middleware/middleware");
 const { GetUser, UpdateUser } = require("../controller/user-controller");
 
-router.get("/:uid", Middleware, GetUser);
-router.patch("/:uid", Middleware, UpdateUser);
+router.get("/", Middleware, GetUser);
+router.patch("/", Middleware, UpdateUser);
 
 module.exports = router;

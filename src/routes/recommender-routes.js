@@ -7,6 +7,6 @@ const {
 } = require("../controller/recommender-controller");
 
 router.post("/", Middleware, AddRecommender);
-router.get("/:uid", Middleware, GetRecommender);
+router.get("/", Middleware, GetRecommender);
 
 module.exports = router;

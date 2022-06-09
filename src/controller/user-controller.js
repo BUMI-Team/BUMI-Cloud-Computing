@@ -2,7 +2,7 @@ const { getAuth } = require("firebase-admin/auth");
 
 exports.GetUser = async (req, res) => {
   await getAuth()
-    .getUser(req.params.uid)
+    .getUser(req.uid)
     .then((userRecord) => {
       if (typeof userRecord === "undefined") {
         res.status(404).json({
@@ -21,7 +21,7 @@ exports.GetUser = async (req, res) => {
 exports.UpdateUser = async (req, res) => {
   const { email, phoneNumber, password, displayName, photoURL } = req.body;
   await getAuth()
-    .updateUser(req.params.uid, {
+    .updateUser(req.uid, {
       email: email,
       phoneNumber: phoneNumber,
       password: password,
