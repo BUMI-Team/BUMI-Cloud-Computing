@@ -22,9 +22,14 @@ https://bumi-api-y4qukd55aq-et.a.run.app/api/user (GET)
 https://bumi-api-y4qukd55aq-et.a.run.app/api/user (PATCH)
 ```
 
-3. Create, and Get Recommender
+3. Create, and Get inputRecommender and Recommender
 
 ```
+inputRecommender
+https://bumi-api-y4qukd55aq-et.a.run.app/api/recommender/input (POST)
+https://bumi-api-y4qukd55aq-et.a.run.app/api/recommender/input (GET)
+
+Recommender
 https://bumi-api-y4qukd55aq-et.a.run.app/api/recommender (POST)
 https://bumi-api-y4qukd55aq-et.a.run.app/api/recommender (GET)
 ```
