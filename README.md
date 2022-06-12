@@ -2,7 +2,7 @@
 # BUMI-Cloud-Computing
 ## Table of Contents
 - [Team Members](#team-members)
-- [Description](#description)
+- [Overview](#overview)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Deployment](#deployment)
