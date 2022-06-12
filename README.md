@@ -50,7 +50,7 @@ cd BUMI-Cloud-Computing
 npm install
 ```
 3. Create a firebase project and download the API key for the Web Firebase Client SDK and `serviceAccountKey.json` from Firebase Admin SDK. 
-4. Make a `.env` file (template given in `.env.example`) and fill all the variables according to the key downloaded. 
+4. Make a `.env` file (template given in `.env.example` and fill all the variables according to the key downloaded. 
 5. Run the server (test). This should run on `localhost:8080`.
 ```
 npm run dev
