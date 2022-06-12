@@ -52,17 +52,21 @@ npm run dev
 ```
 Test the endpoint using Postman before deployment, refer to [this section](#api-endpoints) for more information.
 ## Deployment
-In order to deploy our REST API, containerize the app into a docker image, push the image to the cloud container registry, then deploy it using Cloud Run.
+In order to deploy our REST API, containerize the app into a Docker Image, push the image to the Cloud Container Registry, then deploy it using Cloud Run.
 
-1. Build the docker image.
+1. Build the Docker Image.
 ```
 docker build -t asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest .
 ```
-2. Push the image the container registry.
+2. Test the Docker Image locally.
+```
+docker -d -p 8080:8080 <docker-image-id>
+```
+3. Push the image to Cloud Container Registry.
 ```
 docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest
 ```
-3. Deploy the image to cloud run.
+4. Deploy the image to Cloud Run.
 	- One the GCP (Google Cloud Platform) console, go to **"Navigation Menu --> Cloud Run"**.
 	- Click on "**New Service**".
 	- Choose **"Deploy one revision from an existing container image"**, and choose the docker image that has been pushed.
