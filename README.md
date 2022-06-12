@@ -1,3 +1,4 @@
+
 # BUMI-Cloud-Computing
 ## Table of Contents
 - [Contributor](#contributor)
@@ -18,7 +19,7 @@
 | ------ | ------ | 
 | Hilbert Hasiholan Purba | C2003F0132 |
 ## Description
-This repository contains a backend application used for our android app, BUMI (Bangun UMKM Indonesia), which includes endpoints of CRUD of user, and recommendation. If you're looking for the machine learning API, please refer to [this repo](github.com/BUMI-Team/recommendation-api) instead.
+This repository contains a backend application used for our android app, BUMI (Bangun UMKM Indonesia), which includes endpoints of CRUD of user, and recommendation. If you're looking for the machine learning API, please refer to [this repo](https://github.com/BUMI-Team/recommendation-api) instead.
 
 We use javascript as the programming language running in a node.js environment, and use express.js as our web service application to handle the endpoints.
 
@@ -98,7 +99,7 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest
         "stsTokenManager": {
             "refreshToken": "<your-refresh-token>",
             "accessToken": "<your-access-token>",
-            "expirationTime": <epoch-time>
+            "expirationTime": "<epoch-time>"
         },
         "createdAt": "<epoch-time>",
         "lastLoginAt": "<epoch-time>",
@@ -111,7 +112,7 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest
 ```json
 {
     "code": 400,
-    "error": <error-message-here>
+    "error": "<error-message-here>"
 }
 ```
 ### 2. Sign In
@@ -120,8 +121,8 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest
 - Request Body:
 ```json
 {
-    "email":"<your-name>@example.com",
-    "password":"<your-password>"
+    "email": "<your-name>@example.com",
+    "password": "<your-password>"
 }
 ```
 - Success response
@@ -160,7 +161,7 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest
 ```json
 {
     "code": 400,
-    "error": <error-message>
+    "error": "<error-message>"
 }
 ```
 
@@ -220,8 +221,8 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest
 - Request Body, e.g:
 ```json
 {
-    "displayName": "<your-new-name>", //optional
-    "email": "<your-new-email>@example.com" //optional
+    "displayName": "<your-new-name>",
+    "email": "<your-new-email>@example.com"
 }
 ```
 - Success Response
@@ -312,17 +313,19 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest
 }
 ```
 - Error Response
+
+If the token expired.
 ```json
-// If token wasn't provided
 {
     "code": 403,
     "error": "<error-message>"
 }
-
-//If the recommender was not found
+```
+If the recommender data was not found
+```json
 {
-	"code": 404,
-	"message": "Document does not exist!"
+    "code": 403,
+    "message": "Document does not exist!"
 }
 ```
 Copyright © 2022, [BUMI Team](https://github.com/BUMI-Team).
