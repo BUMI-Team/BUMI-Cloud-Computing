@@ -14,7 +14,6 @@
 	- [Update User by UID](#5-update-user-by-uid)
 	- [Add Recommender](#6-add-recommender)
 	- [Get Recommender](#7-get-recommender)
-## Contributor
 ## Team Members
 |          Member          | Student ID |        Path        |            University            |
 | :------------------------: | :----------: | :------------------: | :---------------------------------: |
