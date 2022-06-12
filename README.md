@@ -333,7 +333,7 @@ If the token expired.
 If the recommender data was not found
 ```json
 {
-    "code": 403,
+    "code": 404,
     "message": "Document does not exist!"
 }
 ```
