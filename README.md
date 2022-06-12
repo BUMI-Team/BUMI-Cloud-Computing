@@ -1,4 +1,18 @@
 # BUMI-Cloud-Computing
+## Table of Contents
+- [Contributor](#contributor)
+- [Description](#description)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Deployment](#deployment)
+- [API Endpoints](#api-endpoints)
+	- [Sign Up](#sign-up)
+	- [Sign In](#sign-in)
+	- [Sign Out](#sign-out)
+	- [Get User by UID](#get-user-by-uid)
+	- [Update User by UID](#update-user-by-uid)
+	- [Add Recommender](#add-recommender)
+	- [Get Recommender](#get-recommender)
 ## Contributor
 | Name | Bangkit ID |
 | ------ | ------ | 
