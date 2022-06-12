@@ -309,11 +309,9 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest
 {
     "code": 200,
     "doc": {
-	    "uid": "<your-uid>",
-	    "punya_usaha": true,
-	    "bidang_keahlian": [
-            "kesehatan"
-        ],
+	"uid": "<your-uid>",
+	"punya_usaha": true,
+	"bidang_keahlian": ["kesehatan"],
         "hobi": [
             "baca",
             "nonton",
