@@ -6,6 +6,7 @@ export async function AddRecommender(req, res, next) {
   await document
     .set(
       {
+        uid: req.uid,
         punya_usaha: punya_usaha,
         bidang_keahlian: bidang_keahlian,
         hobi: hobi,
