@@ -6,13 +6,13 @@
 - [Installation](#installation)
 - [Deployment](#deployment)
 - [API Endpoints](#api-endpoints)
-	- [Sign Up](#sign-up)
-	- [Sign In](#sign-in)
-	- [Sign Out](#sign-out)
-	- [Get User by UID](#get-user-by-uid)
-	- [Update User by UID](#update-user-by-uid)
-	- [Add Recommender](#add-recommender)
-	- [Get Recommender](#get-recommender)
+	- [Sign Up](#1-sign-up)
+	- [Sign In](#2-sign-in)
+	- [Sign Out](#3-sign-out)
+	- [Get User by UID](#4-get-user-by-uid)
+	- [Update User by UID](#5-update-user-by-uid)
+	- [Add Recommender](#6-add-recommender)
+	- [Get Recommender](#7-get-recommender)
 ## Contributor
 | Name | Bangkit ID |
 | ------ | ------ | 
