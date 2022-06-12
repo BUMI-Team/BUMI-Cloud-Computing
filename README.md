@@ -1,7 +1,10 @@
 # BUMI-Cloud-Computing
-
+## Contributor
+| Name | Bangkit ID |
+| ------ | ------ | 
+| Hilbert Hasiholan Purba | C2003F0132 |
 ## Description
-This repository contains a backend application used for our android app, BUMI (Bangun UMKM Indonesia), which includes endpoints of CRUD of user, and recommendation. If you're looking for the machine learning API, please refer to [this repo](github.com/elangaditya/recommendation-api) instead.
+This repository contains a backend application used for our android app, BUMI (Bangun UMKM Indonesia), which includes endpoints of CRUD of user, and recommendation. If you're looking for the machine learning API, please refer to [this repo](github.com/BUMI-Team/recommendation-api) instead.
 
 We use javascript as the programming language running in a node.js environment, and use express.js as our web service application to handle the endpoints.
 
@@ -27,6 +30,7 @@ npm install
 ```
 npm run dev
 ```
+Test the endpoint using Postman before deployment, refer to [this section](#api-endpoints) for more information.
 ## Deployment
 In order to deploy our REST API, containerize the app into a docker image, push the image to the cloud container registry, then deploy it using Cloud Run.
 
@@ -36,13 +40,20 @@ docker build -t asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest .
 ```
 2. Push the image the container registry.
 ```
-docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest .
+docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest
 ```
+3. Deploy the image to cloud run.
+	- One the GCP (Google Cloud Platform) console, go to **"Navigation Menu --> Cloud Run"**.
+	- Click on "**New Service**".
+	- Choose **"Deploy one revision from an existing container image"**, and choose the docker image that has been pushed.
+	- Select the region **"asia-southeast-2"**.
+	- For the authentication, select **"Allow unauthenticated invocations"**.
+	- Click **"Create"**.
 ## API Endpoints
-### 1. SignUp
+### 1. Sign Up
 - URL: `/api/auth/signup`
 - Method: POST
-- Request Data
+- Request Body:
 ```json
 {
     "displayName":"<your-name>",
@@ -89,10 +100,10 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest .
     "error": <error-message-here>
 }
 ```
-### 2. SignIn
+### 2. Sign In
 - URL: `/api/auth/signin`
-- Method: POST
-- Request Data
+- Method: **POST**
+- Request Body:
 ```json
 {
     "email":"<your-name>@example.com",
@@ -122,7 +133,7 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest .
         "stsTokenManager": {
             "refreshToken": "<your-refresh-token>",
             "accessToken": "<your-access-token>",
-            "expirationTime": <epoch-time>
+            "expirationTime": "<epoch-time>"
         },
         "createdAt": "<epoch-time",
         "lastLoginAt": "<epoch-time>",
@@ -139,9 +150,9 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest .
 }
 ```
 
-### 2. SignOut
+### 3. Sign Out
 - URL: `/api/auth/signout`
-- Method: GET
+- Method: **GET**
 - Success Response
 ```json
 {
@@ -151,9 +162,10 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest .
 ```
 **Note: For the next endpoint onwards, please include a bearer token on the request header.**
 `Authorization: Bearer <your-access-token>`
-### 3. Get User by UID
+### 4. Get User by UID
 - URL: `/api/user`
-- Method: GET
+- Method: **GET**
+- Request Header: `Authorization: Bearer <your-access-token>`
 - Success Response
 ```json
 {
@@ -171,7 +183,7 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest .
         "tokensValidAfterTime": "<timestamp>",
         "providerData": [
             {
-                "uid": "<your-name>@example.com",
+                "uid": "<your-uid>",
                 "displayName": "<your-name>",
                 "email": "<your-name>@example.com",
                 "providerId": "password"
@@ -184,6 +196,119 @@ docker push asia.gcr.io/<your-gcp-project>/bumi-team/bumi-api:latest .
 ```json
 {
     "code": 403,
-    "error": <error-message>
+    "error": "<error-message>"
 }
 ```
+### 5. Update User by UID
+- URL: `/api/user`
+- Method: **PATCH**
+- Request Header: `Authorization: Bearer <your-access-token>`
+- Request Body, e.g:
+```json
+{
+    "displayName": "<your-new-name>", //optional
+    "email": "<your-new-email>@example.com" //optional
+}
+```
+- Success Response
+```json
+{
+    "code": 200,
+    "userRecord": {
+        "uid": "<your-uid>",
+        "email": "<your-new-email>@example.com",
+        "emailVerified": true,
+        "displayName": "<your-new-name>",
+        "disabled": false,
+        "metadata": {
+            "lastSignInTime": "<timestamp>",
+            "creationTime": "<timestamp>"
+        },
+        "tokensValidAfterTime": "<timestamp>",
+        "providerData": [
+            {
+                "uid": "<your-uid>",
+                "displayName": "<your-new-name>",
+                "email": "<your-new-email>@example.com",
+                "providerId": "password"
+            }
+        ]
+    }
+}
+```
+- Error Response
+```json
+{
+    "code": 403,
+    "error": "<error-message>"
+}
+```
+### 6. Add Recommender
+- URL: `/api/recommender`
+- Method: **POST**
+- Request Header: `Authorization: Bearer <your-access-token>`
+- Request Body: 
+```json
+{
+    "punya_usaha": true,
+    "bidang_keahlian": ["kesehatan"],
+    "hobi": ["baca", "nonton", "makan", "travelling", "olahraga"],
+    "modal_usaha": "between_50_and_100",
+    "nama_usaha": "nama_usaha-1"
+}
+```
+- Success Response: 
+```json
+{
+    "code": 200,
+    "message": "Successfully added input recommender with ID: <your-uid>"
+}
+```
+- Error Response:
+```json
+{
+    "code": 403,
+    "error": "<error-message>"
+}
+```
+### 7. Get Recommender
+- URL: `/api/recommender`
+- Method: **GET**
+- Request Header: `Authorization: Bearer <your-access-token>`
+- Success Response:
+```json
+{
+    "code": 200,
+    "doc": {
+	    "uid": "<your-uid>",
+	    "punya_usaha": true,
+	    "bidang_keahlian": [
+            "kesehatan"
+        ],
+        "hobi": [
+            "baca",
+            "nonton",
+            "makan",
+            "travelling",
+            "olahraga"
+        ],
+        "modal_usaha": "between_50_and_100",
+        "nama_usaha": "nama_usaha-10"
+    }
+}
+```
+- Error Response
+```json
+// If token wasn't provided
+{
+    "code": 403,
+    "error": "<error-message>"
+}
+
+//If the recommender was not found
+{
+	"code": 404,
+	"message": "Document does not exist!"
+}
+```
+Copyright © 2022, [BUMI Team](https://github.com/BUMI-Team).
