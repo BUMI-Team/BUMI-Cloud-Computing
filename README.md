@@ -15,9 +15,15 @@
 	- [Add Recommender](#6-add-recommender)
 	- [Get Recommender](#7-get-recommender)
 ## Contributor
-| Name | Bangkit ID |
-| ------ | ------ | 
-| Hilbert Hasiholan Purba | C2003F0132 |
+## Team Members
+|          Member          | Student ID |        Path        |            University            |
+| :------------------------: | :----------: | :------------------: | :---------------------------------: |
+|    Muhammad Nur Ilmi    | M7008G0794 |  Machine Learning  |      Universitas Gadjah Mada      |
+|      Melia Fatimah      | M2002G0062 |  Machine Learning  |    Institut Teknologi Bandung    |
+|  Zefanya Sendri Wiloso  | A7003F0130 | Mobile Development | Institut Teknologi Harapan Bangsa |
+| Gilbert Cefryo Palentein | A7003F0131 | Mobile Development | Institut Teknologi Harapan Bangsa |
+| Hilbert Hasiholan Purba | C2003F0132 |  Cloud Computing  | Institut Teknologi Harapan Bangsa |
+|   Elang Aditya Rahman   | C2002G0065 |  Cloud Computing  |    Institut Teknologi Bandung    |
 ## Overview
 This repository contains a backend application used for our android app, BUMI (Bangun UMKM Indonesia), which includes endpoints of CRUD of user, and recommendation. If you're looking for the machine learning API, please refer to [this repo](https://github.com/BUMI-Team/recommendation-api) instead.
 
