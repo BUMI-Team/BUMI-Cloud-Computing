@@ -18,10 +18,15 @@
 | Name | Bangkit ID |
 | ------ | ------ | 
 | Hilbert Hasiholan Purba | C2003F0132 |
-## Description
+## Overview
 This repository contains a backend application used for our android app, BUMI (Bangun UMKM Indonesia), which includes endpoints of CRUD of user, and recommendation. If you're looking for the machine learning API, please refer to [this repo](https://github.com/BUMI-Team/recommendation-api) instead.
 
-We use javascript as the programming language running in a node.js environment, and use express.js as our web service application to handle the endpoints.
+We use javascript as our programming language running in a node.js environment, and use express.js as our web service application to handle the endpoints.
+
+Cloud services that we use are as follows:
+- [Cloud Run](https://cloud.google.com/run) (App Deployment).
+- [Firebase Auth](https://firebase.google.com/docs/auth) (User Management).
+- [Cloud Firestore](https://firebase.google.com/docs/firestore) (Data Management).
 
 ## Requirements
 1. Any text editor (preferably [Visual Studio Code](https://code.visualstudio.com/)).
