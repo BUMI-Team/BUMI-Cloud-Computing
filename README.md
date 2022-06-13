@@ -24,7 +24,7 @@
 | Hilbert Hasiholan Purba | C2003F0132 |  Cloud Computing  | Institut Teknologi Harapan Bangsa |
 |   Elang Aditya Rahman   | C2002G0065 |  Cloud Computing  |    Institut Teknologi Bandung    |
 ## Overview
-This repository contains a backend application used for our android app, BUMI (Bangun UMKM Indonesia), which includes endpoints of CRUD of user, and recommendation. If you're looking for the machine learning API, please refer to [this repo](https://github.com/BUMI-Team/recommendation-api) instead.
+This repository contains a backend application used for our android app, BUMI (Bangun UMKM Indonesia), which includes endpoints of CRUD of user, and recommendation. If you're looking for the machine learning API, please refer to [this repo](https://github.com/mnnurilmi/recommendation-api) instead.
 
 We use javascript as our programming language running in a node.js environment, and use express.js as our web service application to handle the endpoints.
 
